@@ -1,10 +1,8 @@
-import javax.swing.text.DateFormatter;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Timer {
 
-    public static void main(String a[]) {
+    public static void main(String[] a) {
         new Timer();
 
 
@@ -16,9 +14,12 @@ public class Timer {
     }
 
     private static class Clock extends Thread {
-        LocalTime time= LocalTime.now();    /** Başlangıç zamanı sistemden alınır.*/
+        LocalTime time = LocalTime.now();
+        /**
+         * Başlangıç zamanı sistemden alınır.
+         */
 
-        private int dk=time.getMinute(), sn=time.getSecond(), saat=time.getHour();;
+        private int dk = time.getMinute(), sn = time.getSecond(), saat = time.getHour();
 
         /**
          * Bu saate bir saniye ekleyen method. Bu method her çağırıldığında
@@ -27,12 +28,12 @@ public class Timer {
          */
         private void timeIncrement() {
             sn++;
-            if(sn/60 > 0) {
-                dk += sn/60;
-                sn %=60;
+            if (sn / 60 > 0) {
+                dk += sn / 60;
+                sn %= 60;
             }
-            if(dk/60 > 0) {
-                saat += dk/60;
+            if (dk / 60 > 0) {
+                saat += dk / 60;
                 dk %= 60;
             }
         }
@@ -43,11 +44,11 @@ public class Timer {
          * içerisinde bir sonsuz döngü ayarlamanız gerekiyor.
          */
         public void run() {
-            while(true) { // Sonsuz döngümüz.
+            while (true) { // Sonsuz döngümüz.
                 try {
                     Thread.sleep(1000); // Thread'i 1 saniye beklet.
                     timeIncrement(); // Sonra saate bir saniye ekle.
-                    System.out.print("\r"+"The time is : "+this); // Saati yazdır.
+                    System.out.print("\rThe time is : " + this); // Saati yazdır.
 
                 } catch (InterruptedException e) {
                     e.printStackTrace(); // Thread'i uyutmaya çalışırken hata olması durumunda...
@@ -61,9 +62,9 @@ public class Timer {
          * Clock class'ından dijital saat dizaynında bir String üretir.
          */
         public String toString() {
-            String a = (saat/10 == 0) ? "0" + saat : ""+saat;
-            a += ":" + ((dk/10 == 0) ? "0" + dk : ""+dk);
-            a += ":" + ((sn/10 == 0) ? "0" + sn : ""+sn);
+            String a = (saat / 10 == 0) ? "0" + saat : "" + saat;
+            a += ":" + ((dk / 10 == 0) ? "0" + dk : "" + dk);
+            a += ":" + ((sn / 10 == 0) ? "0" + sn : "" + sn);
             return a;
         }
     }

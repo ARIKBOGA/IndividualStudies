@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 import static java.awt.Cursor.TEXT_CURSOR;
 import static java.awt.Cursor.WAIT_CURSOR;
 
@@ -25,5 +27,7 @@ public class BitWiseOperations {
         System.out.println(.1F + .2F);
 
         System.out.println(WAIT_CURSOR+TEXT_CURSOR);
+        System.out.println("select round(abs(max(lat_n)-min(lat_n)) + abs(max(long_w)-min(long_w)),4)\n".toUpperCase(Locale.US) +
+                "from station;".toUpperCase(Locale.US));
     }
 }
