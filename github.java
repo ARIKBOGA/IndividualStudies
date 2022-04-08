@@ -1,3 +1,4 @@
 class github{
-  int page
+  String name;
+  int page;
   }
