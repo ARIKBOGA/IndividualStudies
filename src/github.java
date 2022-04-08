@@ -6,4 +6,8 @@ class github {
         this.name = name;
         this.page = page;
     }
+
+    public github(String name) {
+        this.name = name;
+    }
 }
