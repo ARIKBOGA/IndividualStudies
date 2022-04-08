@@ -9,17 +9,20 @@ public class Calisan {
 
 class A {
     private final String name = "Aaaaa";
-     void m1() {
+
+    void m1() {
         System.out.println("A");
     }
-    protected String getName(){
+
+    protected String getName() {
         return this.name;
     }
 }
 
 class B extends A {
     String name = "Bbbbb";
-    protected void m1(){
+
+    protected void m1() {
         System.out.println("B");
     }
 }
